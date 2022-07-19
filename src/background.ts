@@ -1,9 +1,8 @@
-let checkBtn = false
-
+let checkBtn = null as HTMLElement | null; 
 const intervalId = setInterval(waitForModalLoad, 1000)
 
 function waitForModalLoad() {
-  checkBtn = document.querySelector('[data-test-id="exercise-check-answer"]')
+  checkBtn = document.querySelector('[data-test-id="exercise-check-answer"]');
 
   if (checkBtn) {
     const customCheckBtn = document.createElement('button')
@@ -40,19 +39,19 @@ function createCustomPopUp() {
   div.innerHTML =
     '<p>Is this the answer you would like to check?</p><button id="your-answer">Yes, this is my answer</button><button id="not-sure">Not sure yet</button>'
 
-  const yesButton = document.getElementById('your-answer')
-  const noButton = document.getElementById('not-sure')
+  const yesButton = document.getElementById('your-answer') 
+  const noButton = document.getElementById('not-sure')  
 
-  yesButton.addEventListener('click', function () {
-    checkBtn.click()
-    helperRemovePopUp(div)
+  yesButton?.addEventListener('click', function () {
+    checkBtn?.click()
+    return helperRemovePopUp(div)
   })
 
-  noButton.addEventListener('click', function () {
-    helperRemovePopUp(div)
+  noButton?.addEventListener('click', function () {
+    return helperRemovePopUp(div)
   })
 }
 
-function helperRemovePopUp(div) {
+function helperRemovePopUp(div : HTMLElement) {
   div.remove()
 }
