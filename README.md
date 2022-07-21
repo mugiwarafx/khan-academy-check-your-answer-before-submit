@@ -6,7 +6,7 @@
 ~$ npm run build
 ```
 
-npm run build command generates a dist foler that you can upload to the following URL (Google Chrome) chrome://extensions
+npm run build command generates a dist folder that you can upload to the following URL (Google Chrome) chrome://extensions
 
 ### TODO list
 
