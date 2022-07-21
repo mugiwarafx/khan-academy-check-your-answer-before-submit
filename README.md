@@ -1,9 +1,12 @@
 ### Contribute
 
-git clone this repository
-npm install -y
-npm run build
-upload the dist folder to the chrome://extensions web page
+```cmd
+~S git clone git@github.com:mugiwarafx/khan-academy-check-your-answer-before-submit.git
+~$ npm install -y
+~$ npm run build
+```
+
+npm run build command generates a dist foler that you can upload to the following URL (Google Chrome) chrome://extensions
 
 ### TODO list
 
