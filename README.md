@@ -12,12 +12,10 @@ npm run build command generates a dist folder that you can upload to the followi
 
 - [x] Set up the project as TypeScript ready.
 - [x] Protect master branch, only reviewed PR allowed.
-[
-- [ ] Capture enter key
-- [ ] Create state based on the chkButton text
+- [x] Capture enter key
+- [x] Match KA styles (we don't need it any more since all the magic happens behind de scenes)
+- [x] Separate KA elemnts from custom elements (namespace) Not needed, the extension has its own namespace.
+- [ ] We have to listen the check answer button, and each time it contains the text "Next question" and it is clicked, we should run the main function again.
 - [ ] Make this component a11y
-] That could be easier, just disable and disable-aria=true the button while input focus = true. No need of complex logic! 
-- [ ] Match KA styles
-- [ ] Create extension icon
-- [ ] Separate KA elemnts from custom elements (namespace)
-- [ ] Set up a properly README.md
+- [ ] Design extension icon
+- [ ] Set up a proper README.md
