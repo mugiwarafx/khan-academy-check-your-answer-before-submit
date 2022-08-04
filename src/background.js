@@ -31,17 +31,23 @@ const submitOnCtrlEnter = (e) => {
 
 // @param void
 const main = () => {
-  console.log('main triggered')
+  //console.log('main triggered')
   const form = document.querySelector('[name="answerform"]')
   if (form) {
+    //console.log('main form')
     // Form loaded, we can clear the interval
+    //console.log('main', mainIntervalId)
     if (mainIntervalId) clearInterval(mainIntervalId)
-    if (recursiveInternalId) clearInterval(recursiveInternalId)
+    //if (recursiveInternalId) clearInterval(recursiveInternalId)
 
     // We don't need this functionality for answer forms that do not have input text
     input = document.querySelector('.perseus-input')
     mathInput = document.querySelector('.perseus-math-input')
     if (!input && !mathInput) return false
+
+    // disable enter to prevent submission
+    document.addEventListener('keydown', disableEnter)
+    document.addEventListener('keydown', submitOnCtrlEnter)
 
     // prettier-ignore
     checkBtn = document.querySelector('[data-test-id="exercise-check-answer"]')
@@ -67,14 +73,14 @@ const main = () => {
 
     const taskContainerObserver = new MutationObserver((mutations, mut) => {
       for (let i = 0; i < mutations.length; i++) {
-        console.log(mutations[i], i)
+        //console.log(mutations[i], i)
         if (document.querySelector('[data-test-id="exercise-next-question"]')) {
           enableEnter()
           // prettier-ignore
           nextQuestionBtn = document.querySelector('[data-test-id="exercise-next-question"]')
           nextQuestionBtn.focus()
-          nextQuestionBtn.addEventListener('click', recursiveMainInterval)
-          nextQuestionBtn.addEventListener('keydown', recursiveMainInterval)
+          nextQuestionBtn.addEventListener('click', run_main)
+          nextQuestionBtn.addEventListener('keydown', run_main)
         }
       }
     })
@@ -85,15 +91,21 @@ const main = () => {
       subtree: true,
     })
   }
-
-  // clearIntervals once the quiz is finished
-  if (mainIntervalId) clearInterval(mainIntervalId)
-  if (recursiveInternalId) clearInterval(recursiveInternalId)
 }
 
 // @param function, @param number
 mainIntervalId = setInterval(main, 1000)
 
-const recursiveMainInterval = () => {
-  recursiveInternalId = setInterval(main, 1000)
-}
+const run_main = () => setTimeout(main, 1000)
+
+document.addEventListener('click', function (e) {
+  if (
+    e.target.innerText === 'Practice' ||
+    e.target.innerText === 'Start' ||
+    e.target.innerText === 'Start quiz' ||
+    e.target.innerText === "Let's go"
+  ) {
+    //console.log(e)
+    run_main()
+  }
+})
