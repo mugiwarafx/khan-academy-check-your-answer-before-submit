@@ -27,8 +27,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - [x] Set up the project as TypeScript ready.
 - [x] Protect master branch, only reviewed PR allowed.
 - [x] Capture enter key
-- [x] Match KA styles (we don't need it any more since all the magic happens behind de scenes)
-- [x] Separate KA elemnts from custom elements (namespace) Not needed, the extension has its own namespace.
+- [x] Match KA styles (we don't need it anymore since all the magic happens behind the scenes)
+- [x] Separate KA elements from custom elements (namespace) Not needed, the extension has its own namespace.
 - [x] Run main functionality as listener each time check answer button is clicked 
 - [x] Design extension icon
 - [x] Set up a proper README.md
