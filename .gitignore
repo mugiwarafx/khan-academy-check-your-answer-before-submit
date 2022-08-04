@@ -1,3 +1,4 @@
 dist/
 node_modules/
 private*
+src/test.js
