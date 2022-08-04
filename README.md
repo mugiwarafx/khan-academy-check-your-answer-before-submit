@@ -1,3 +1,17 @@
+<p align="center">
+    <img src="https://github.com/mugiwarafx/khan-academy-submit-shortcut-reworked/blob/master/assets/icon-128.png"
+        height="138">
+</p>
+<p align="center">
+    <a href="https://github.com/mugiwarafx/khan-academy-submit-shortcut-reworked/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/mugiwarafx/khan-academy-submit-shortcut-reworked" /></a>
+    <a href="https://github.com/mugiwarafx/khan-academy-submit-shortcut-reworked/pulse" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/mugiwarafx/khan-academy-submit-shortcut-reworked" /></a>
+    <a href="https://discord.gg/AxY3Vz92Pj">
+        <img src="https://img.shields.io/discord/999722575057924207?logo=discord"
+            alt="chat on Discord"></a>
+</p>
+
 # Khan Academy Submit Shortcut Reworked 
 
 A Google Chrome extension that **prevents submit on press enter** while you are typing inside an **input text**, also provides you a shortcut (Ctrl + S) to submit the answer you just typed.
