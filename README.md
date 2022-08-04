@@ -1,15 +1,29 @@
-### Contribute
+# Khan Academy Submit Shortcut Reworked 
+
+A Google Chrome extension that **prevents submit on press enter** while you are typing inside an **input text**, also provides you a shortcut (Ctrl + S) to submit the answer you just typed.
+
+## Installation
 
 ```cmd
-~S git clone git@github.com:mugiwarafx/khan-academy-check-your-answer-before-submit.git
+~S git clone git@github.com:mugiwarafx/khan-academy-submit-shortcut-reworked.git
+~$ cd khan-academy-submit-shortcut-reworked
 ~$ npm install -y
+```
+
+## Build
+
+```cmd
+~$ cd khan-academy-submit-shortcut-reworked
 ~$ npm run build
 ```
 
+## Usage
 npm run build command generates a dist folder that you can upload to the following URL (Google Chrome) chrome://extensions
 
-### TODO
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+### TODO
 - [x] Set up the project as TypeScript ready.
 - [x] Protect master branch, only reviewed PR allowed.
 - [x] Capture enter key
@@ -21,3 +35,6 @@ npm run build command generates a dist folder that you can upload to the followi
 - [ ] Make this component a11y (handle focus when our answer is not correct)
 - [ ] Migrate to TypeScript
 - [ ] Upload the extension to the chrome store
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
