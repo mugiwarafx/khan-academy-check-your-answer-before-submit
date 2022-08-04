@@ -31,12 +31,12 @@ const submitOnCtrlEnter = (e) => {
 
 // @param void
 const main = () => {
-  console.log('main triggered')
+  //console.log('main triggered')
   const form = document.querySelector('[name="answerform"]')
   if (form) {
-    console.log('main form')
+    //console.log('main form')
     // Form loaded, we can clear the interval
-    console.log('main', mainIntervalId)
+    //console.log('main', mainIntervalId)
     if (mainIntervalId) clearInterval(mainIntervalId)
     //if (recursiveInternalId) clearInterval(recursiveInternalId)
 
@@ -73,7 +73,7 @@ const main = () => {
 
     const taskContainerObserver = new MutationObserver((mutations, mut) => {
       for (let i = 0; i < mutations.length; i++) {
-        console.log(mutations[i], i)
+        //console.log(mutations[i], i)
         if (document.querySelector('[data-test-id="exercise-next-question"]')) {
           enableEnter()
           // prettier-ignore
@@ -97,3 +97,15 @@ const main = () => {
 mainIntervalId = setInterval(main, 1000)
 
 const run_main = () => setTimeout(main, 1000)
+
+document.addEventListener('click', function (e) {
+  if (
+    e.target.innerText === 'Practice' ||
+    e.target.innerText === 'Start' ||
+    e.target.innerText === 'Start quiz' ||
+    e.target.innerText === "Let's go"
+  ) {
+    //console.log(e)
+    run_main()
+  }
+})

@@ -7,8 +7,8 @@ module.exports = {
       __dirname,
       '..',
       'src',
-      'background.js',
-      'test.ts' //remove once ts prod ready
+      'background.js'
+      //'test.ts' //remove once ts prod ready
     ),
   },
   output: {
