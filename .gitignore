@@ -1,4 +1,9 @@
 dist/
+
 node_modules/
+
 private*
+
+src/ts.js
 src/test.js
+src/test.ts

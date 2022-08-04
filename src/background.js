@@ -34,14 +34,20 @@ const main = () => {
   console.log('main triggered')
   const form = document.querySelector('[name="answerform"]')
   if (form) {
+    console.log('main form')
     // Form loaded, we can clear the interval
+    console.log('main', mainIntervalId)
     if (mainIntervalId) clearInterval(mainIntervalId)
-    if (recursiveInternalId) clearInterval(recursiveInternalId)
+    //if (recursiveInternalId) clearInterval(recursiveInternalId)
 
     // We don't need this functionality for answer forms that do not have input text
     input = document.querySelector('.perseus-input')
     mathInput = document.querySelector('.perseus-math-input')
     if (!input && !mathInput) return false
+
+    // disable enter to prevent submission
+    document.addEventListener('keydown', disableEnter)
+    document.addEventListener('keydown', submitOnCtrlEnter)
 
     // prettier-ignore
     checkBtn = document.querySelector('[data-test-id="exercise-check-answer"]')
@@ -73,8 +79,8 @@ const main = () => {
           // prettier-ignore
           nextQuestionBtn = document.querySelector('[data-test-id="exercise-next-question"]')
           nextQuestionBtn.focus()
-          nextQuestionBtn.addEventListener('click', recursiveMainInterval)
-          nextQuestionBtn.addEventListener('keydown', recursiveMainInterval)
+          nextQuestionBtn.addEventListener('click', run_main)
+          nextQuestionBtn.addEventListener('keydown', run_main)
         }
       }
     })
@@ -85,15 +91,9 @@ const main = () => {
       subtree: true,
     })
   }
-
-  // clearIntervals once the quiz is finished
-  if (mainIntervalId) clearInterval(mainIntervalId)
-  if (recursiveInternalId) clearInterval(recursiveInternalId)
 }
 
 // @param function, @param number
 mainIntervalId = setInterval(main, 1000)
 
-const recursiveMainInterval = () => {
-  recursiveInternalId = setInterval(main, 1000)
-}
+const run_main = () => setTimeout(main, 1000)

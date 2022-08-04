@@ -13,7 +13,7 @@
   "content_scripts": [
     {
       "js": ["background.js"],
-      "matches": ["https://*.khanacademy.org/*?modal=*"]
+      "matches": ["https://*.khanacademy.org/*"]
     }
   ]
 }
