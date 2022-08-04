@@ -32,7 +32,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - [x] Run main functionality as listener each time check answer button is clicked 
 - [x] Design extension icon
 - [x] Set up a proper README.md
-- [ ] Make this component a11y (handle focus when our answer is not correct)
+- [ ] Make this component as a11y as possible (handle focus properly when our answer is not correct)
 - [ ] Migrate to TypeScript
 - [ ] Upload the extension to the chrome store
 
