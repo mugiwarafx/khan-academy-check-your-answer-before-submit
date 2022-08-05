@@ -1,7 +1,13 @@
-let input, mathInput, target, checkBtn, mainIntervalId, recursiveInternalId
+let input,
+  mathInput,
+  target: Node | null,
+  checkBtn: HTMLButtonElement | null,
+  nextQuestionBtn: HTMLButtonElement | null,
+  mainIntervalId: NodeJS.Timer | undefined,
+  recursiveInternalId
 
 // @param event
-const disableEnter = (e) => {
+const disableEnter = (e: any) => {
   if (e.code === 'Enter') {
     e.preventDefault()
     e.stopImmediatePropagation()
@@ -11,21 +17,21 @@ const disableEnter = (e) => {
 
 // @param void
 const enableEnter = () => {
-  target.removeEventListener('keydown', disableEnter)
+  target?.removeEventListener('keydown', disableEnter)
   document.removeEventListener('keydown', disableEnter)
-  checkBtn.removeAttribute('disabled')
+  checkBtn?.removeAttribute('disabled')
   //console.log(target, checkBtn, 'document', 'enter enabled')
 }
 
 // @param void
-const submitOnCtrlEnter = (e) => {
+const submitOnCtrlEnter = (e: any) => {
   //console.log(e)
   if (e.code === 'KeyS' && e.ctrlKey) {
     //console.log('SOCE if')
-    target.removeEventListener('keydown', disableEnter)
+    target?.removeEventListener('keydown', disableEnter)
     document.removeEventListener('keydown', disableEnter)
-    checkBtn.removeAttribute('disabled')
-    checkBtn.click()
+    checkBtn?.removeAttribute('disabled')
+    checkBtn?.click()
   }
 }
 
@@ -57,8 +63,8 @@ const main = () => {
       mutations.forEach(function (mutation) {
         //console.log(mutation.type)
         if (mutation.type) {
-          checkBtn.setAttribute('disabled', 'disabled')
-          target.addEventListener('keydown', disableEnter)
+          checkBtn?.setAttribute('disabled', 'disabled')
+          target?.addEventListener('keydown', disableEnter)
           document.addEventListener('keydown', disableEnter)
           document.addEventListener('keydown', submitOnCtrlEnter)
         }
@@ -66,7 +72,7 @@ const main = () => {
     })
 
     const config = { attributes: true, childList: true, characterData: true }
-    inputObserver.observe(target, config)
+    if (target) inputObserver.observe(target, config)
 
     // recursive mutation observer
     const taskContainer = document.querySelector('.task-container')
@@ -78,18 +84,20 @@ const main = () => {
           enableEnter()
           // prettier-ignore
           nextQuestionBtn = document.querySelector('[data-test-id="exercise-next-question"]')
-          nextQuestionBtn.focus()
-          nextQuestionBtn.addEventListener('click', run_main)
-          nextQuestionBtn.addEventListener('keydown', run_main)
+          nextQuestionBtn?.focus()
+          nextQuestionBtn?.addEventListener('click', run_main)
+          nextQuestionBtn?.addEventListener('keydown', run_main)
         }
       }
     })
 
-    taskContainerObserver.observe(taskContainer, {
-      attributes: true,
-      characterData: true,
-      subtree: true,
-    })
+    if (taskContainer) {
+      taskContainerObserver.observe(taskContainer, {
+        attributes: true,
+        characterData: true,
+        subtree: true,
+      })
+    }
   }
 }
 
@@ -99,13 +107,17 @@ mainIntervalId = setInterval(main, 1000)
 const run_main = () => setTimeout(main, 1000)
 
 document.addEventListener('click', function (e) {
-  if (
-    e.target.innerText === 'Practice' ||
-    e.target.innerText === 'Start' ||
-    e.target.innerText === 'Start quiz' ||
-    e.target.innerText === "Let's go"
-  ) {
-    //console.log(e)
-    run_main()
+  let startBtn = e.target as HTMLElement
+  if (e.target) {
+    if (
+      startBtn.innerText === 'Practice' ||
+      startBtn.innerText === 'Start' ||
+      startBtn.innerText === 'Start quiz' ||
+      startBtn.innerText === "Let's go" ||
+      startBtn.innerText === 'Try again'
+    ) {
+      //console.log(e)
+      run_main()
+    }
   }
 })
